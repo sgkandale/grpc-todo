@@ -4,14 +4,24 @@ import (
 	"context"
 	"log"
 
-	"todo/todoPB"
-	"todo/todos"
+	item "grpc-todo/item"
+	todoPB "grpc-todo/todoPB"
 )
 
 func (*Server) CloseItem(ctx context.Context, r *todoPB.Item) (*todoPB.GeneralResponse, error) {
 	log.Println("CloseItem() called")
 
-	err := todos.TodoList.CloseItem(r.GetId())
+	itemInstance, err := item.NewItemInstance(r.GetId())
+	if err != nil {
+		return nil, err
+	}
+
+	err = itemInstance.LoadDetails()
+	if err != nil {
+		return nil, err
+	}
+
+	err = itemInstance.SetClosed()
 	if err != nil {
 		return nil, err
 	}

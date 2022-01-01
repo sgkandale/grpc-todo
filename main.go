@@ -6,9 +6,9 @@ import (
 	"os"
 	"os/signal"
 
-	"todo/config"
-	"todo/server"
-	"todo/todoPB"
+	config "grpc-todo/config"
+	server "grpc-todo/server"
+	todoPB "grpc-todo/todoPB"
 
 	"google.golang.org/grpc"
 	"google.golang.org/grpc/credentials"

@@ -17,6 +17,22 @@ func VerifyConfig() config {
 		}
 	}
 
+	if parsedConfig.Postgres.Username == "" {
+		log.Fatal("Postgres username not specified")
+	}
+	if parsedConfig.Postgres.Password == "" {
+		log.Fatal("Postgres password not specified")
+	}
+	if parsedConfig.Postgres.Endpoint == "" {
+		log.Fatal("Postgres endpoint not specified")
+	}
+	if parsedConfig.Postgres.Port == "" {
+		log.Fatal("Postgres port not specified")
+	}
+	if parsedConfig.Postgres.DBName == "" {
+		log.Fatal("Postgres DB name not specified")
+	}
+
 	return parsedConfig
 
 }

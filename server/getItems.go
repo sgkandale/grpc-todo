@@ -4,23 +4,26 @@ import (
 	"context"
 	"log"
 
-	"todo/todoPB"
-	"todo/todos"
+	item "grpc-todo/item"
+	todoPB "grpc-todo/todoPB"
 )
 
 func (*Server) GetItems(ctx context.Context, r *todoPB.GetItemsRequest) (*todoPB.GetItemsResponse, error) {
 	log.Println("GetItems() called")
 
-	insertedItems := todos.TodoList.Items
+	dbItems, err := item.GetAllItems()
+	if err != nil {
+		return nil, err
+	}
 
 	toRespItems := []*todoPB.Item{}
 
-	for i := range insertedItems {
+	for i := range dbItems {
 		toRespItems = append(toRespItems, &todoPB.Item{
-			Id:          insertedItems[i].ID,
-			Title:       insertedItems[i].Title,
-			Description: insertedItems[i].Description,
-			Closed:      insertedItems[i].Closed,
+			Id:          dbItems[i].ID,
+			Title:       dbItems[i].Title,
+			Description: dbItems[i].Description,
+			Closed:      dbItems[i].Closed,
 		})
 	}
 
