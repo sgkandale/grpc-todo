@@ -29,4 +29,5 @@ func (item *Item) LoadDetails() error {
 	}
 
 	return nil
+
 }

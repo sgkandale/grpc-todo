@@ -40,4 +40,5 @@ func GetAllItems() ([]Item, error) {
 	}
 
 	return items, nil
+
 }

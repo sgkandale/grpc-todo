@@ -23,4 +23,5 @@ func (item *Item) InsertInDB() error {
 	}
 
 	return nil
+
 }

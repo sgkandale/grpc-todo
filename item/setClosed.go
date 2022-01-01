@@ -40,4 +40,5 @@ func (item *Item) SetClosed() error {
 	}
 
 	return nil
+
 }

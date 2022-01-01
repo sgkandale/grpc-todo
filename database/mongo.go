@@ -27,6 +27,7 @@ func MongoDBClientConn() *mongo.Client {
 	return client
 }
 
+
 var MongoDBClient = MongoDBClientConn()
 
 var ToDoDB = MongoDBClient.Database("grpcTodo")
