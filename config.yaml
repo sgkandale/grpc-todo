@@ -3,4 +3,9 @@ serverConfig:
     port: "8010"
     certPath: "/path/to/cert.pem"
     keyPath: "/path/to/key.pem"
-MongoDBURI: "mongodb://localhost:27017/?readPreference=primary&appname=MongoDB%20Compass&ssl=false"
+postgres:
+    username: "postgres"
+    password: "postgres"
+    endpoint: "localhost"
+    port: "5432"
+    dBName: "grpctodo"

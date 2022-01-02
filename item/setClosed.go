@@ -10,17 +10,18 @@ import (
 	"google.golang.org/grpc/status"
 )
 
-func (item *Item) DeleteItem() error {
+func (item *Item) SetClosed() error {
 
 	_, err := database.TodoDB.Exec(
 		context.Background(),
-		`DELETE FROM `+database.ItemsTable+`
+		`UPDATE `+database.ItemsTable+`
+		 SET closed=true
 		 WHERE id=$1`,
 		item.ID,
 	)
 
 	if err != nil {
-		log.Println("Error deleting item from DB: ", err)
+		log.Println("Error closing item in DB: ", err)
 		return status.Error(codes.Internal, "something went wrong")
 	}
 
