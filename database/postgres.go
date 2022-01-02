@@ -1,4 +1,4 @@
-package primaryDB
+package database
 
 import (
 	"context"
