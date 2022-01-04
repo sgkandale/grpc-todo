@@ -4,7 +4,7 @@ serverConfig:
     certPath: "/path/to/cert.pem"
     keyPath: "/path/to/key.pem"
 mysql:
-    username: ""
+    username: "root"
     password: ""
-    host: ""
-    dbname: ""
+    host: "localhost"
+    dbname: "grpctodo"

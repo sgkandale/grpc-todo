@@ -17,6 +17,19 @@ func VerifyConfig() config {
 		}
 	}
 
+	if parsedConfig.MySQL.Username == "" {
+		log.Fatal("No MySQL username provided")
+	}
+	if parsedConfig.MySQL.Password == "" {
+		log.Fatal("No MySQL password provided")
+	}
+	if parsedConfig.MySQL.Host == "" {
+		log.Fatal("No MySQL host provided")
+	}
+	if parsedConfig.MySQL.DBName == "" {
+		log.Fatal("No MySQL database name provided")
+	}
+
 	return parsedConfig
 
 }

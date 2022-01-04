@@ -1,7 +1,7 @@
 package server
 
 import (
-	"todo/todoPB"
+	todoPB "grpc-todo/todoPB"
 )
 
 //Server exposed

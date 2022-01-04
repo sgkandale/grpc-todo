@@ -20,7 +20,7 @@ func MySQLConn() *sqlx.DB {
 	db, err := sqlx.Connect(
 		"mysql",
 		fmt.Sprintf(
-			"%s:%s@tcp(%s)/%s?tls=true",
+			"%s:%s@tcp(%s)/%s?tls=false",
 			config.Config.MySQL.Username,
 			config.Config.MySQL.Password,
 			config.Config.MySQL.Host,
