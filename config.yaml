@@ -3,3 +3,8 @@ serverConfig:
     port: "8010"
     certPath: "/path/to/cert.pem"
     keyPath: "/path/to/key.pem"
+mysql:
+    username: ""
+    password: ""
+    host: ""
+    dbname: ""
