@@ -1,0 +1,1 @@
+aws dynamodb create-table --cli-input-json file://create-table-movies.json --region ap-south-1

@@ -7,6 +7,14 @@ type ServerConfig struct {
 	KeyPath    string
 }
 
+type DynamoDB struct {
+	Region    string
+	Table     string
+	AccessKey string
+	SecretKey string
+}
+
 type config struct {
 	ServerConfig ServerConfig
+	DynamoDB     DynamoDB
 }

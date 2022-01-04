@@ -1,0 +1,17 @@
+{
+    "TableName": "todoItems",
+    "KeySchema": [
+      { "AttributeName": "id", "KeyType": "HASH" }
+    ],
+    "AttributeDefinitions": [
+      { "AttributeName": "id", "AttributeType": "S" },
+      { "AttributeName": "title", "AttributeType": "S" },
+      { "AttributeName": "description", "AttributeType": "S" },
+      { "AttributeName": "closed", "AttributeType": "B" }
+    ],
+    "ProvisionedThroughput": {
+        "NumberOfDecreasesToday": 0,
+        "ReadCapacityUnits": 0,
+        "WriteCapacityUnits": 0
+    }
+}
