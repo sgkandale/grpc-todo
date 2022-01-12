@@ -4,9 +4,8 @@ import (
 	"context"
 	"log"
 
-	"todo/item"
-	"todo/todoPB"
-	"todo/todos"
+	item "grpc-todo/item"
+	todoPB "grpc-todo/todoPB"
 )
 
 func (*Server) CreateItem(ctx context.Context, r *todoPB.Item) (*todoPB.Item, error) {
@@ -21,7 +20,10 @@ func (*Server) CreateItem(ctx context.Context, r *todoPB.Item) (*todoPB.Item, er
 		return nil, err
 	}
 
-	todos.TodoList.AddItem(newItem)
+	err = newItem.InsertInDB()
+	if err != nil {
+		return nil, err
+	}
 
 	return &todoPB.Item{
 		Id:          newItem.ID,

@@ -7,6 +7,19 @@ type ServerConfig struct {
 	KeyPath    string
 }
 
+type Cassandra struct {
+	Host     string
+	Port     string
+	Username string
+	Password string
+	Keyspace string
+	Table    string
+	CertPath string
+	KeyPath  string
+	CaPath   string
+}
+
 type config struct {
 	ServerConfig ServerConfig
+	Cassandra    Cassandra
 }

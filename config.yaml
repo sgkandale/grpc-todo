@@ -3,3 +3,13 @@ serverConfig:
     port: "8010"
     certPath: "/path/to/cert.pem"
     keyPath: "/path/to/key.pem"
+cassandra:
+    host: "cassandraHostAddress"
+    port: "cassandraPort"
+    username: "cassandraUsername"
+    password: "cassandraPassword"
+    keyspace: "grpctodo"
+    table: "items"
+    certPath: "path/to/cert"
+    keyPath: "path/to/key"
+    caPath: "path/to/ca.crt"
