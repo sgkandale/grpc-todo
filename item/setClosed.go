@@ -12,7 +12,7 @@ import (
 func (item *Item) SetClosed() error {
 
 	err := database.CassandraClient.Query(
-		`UPDATE `+database.Keyspace+`.`+database.Table+`
+		`UPDATE `+database.Table+`
 		SET closed = ?
 		WHERE id = ?`,
 		true, item.ID,

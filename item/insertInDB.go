@@ -12,7 +12,7 @@ import (
 func (item *Item) InsertInDB() error {
 
 	err := database.CassandraClient.Query(
-		`INSERT INTO `+database.Keyspace+`.`+database.Table+`
+		`INSERT INTO `+database.Table+`
 		(id, title, description, closed)
 		VALUES (?, ?, ?, ?)`,
 		item.ID, item.Title, item.Description, item.Closed,

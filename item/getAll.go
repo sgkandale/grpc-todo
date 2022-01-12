@@ -13,7 +13,7 @@ func GetAllItems() ([]Item, error) {
 
 	scanner := database.CassandraClient.Query(
 		`SELECT id, title, description, closed
-		FROM ` + database.Keyspace + `.` + database.Table + `;`,
+		FROM ` + database.Table + `;`,
 	).Iter().Scanner()
 
 	for scanner.Next() {

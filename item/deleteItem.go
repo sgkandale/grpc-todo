@@ -12,7 +12,7 @@ import (
 func (item *Item) DeleteItem() error {
 
 	err := database.CassandraClient.Query(
-		`DELETE FROM `+database.Keyspace+`.`+database.Table+`
+		`DELETE FROM `+database.Table+`
 		WHERE id = ?`,
 		item.ID,
 	).Exec()

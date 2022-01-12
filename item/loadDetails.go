@@ -18,7 +18,7 @@ func (item *Item) LoadDetails() error {
 
 	err := database.CassandraClient.Query(`
 		SELECT title, description, closed
-		FROM `+database.Keyspace+`.`+database.Table+`
+		FROM `+database.Table+`
 		WHERE id = ? LIMIT 1`,
 		item.ID,
 	).WithContext(ctx).Scan(&item.Title, &item.Description, &item.Closed)
