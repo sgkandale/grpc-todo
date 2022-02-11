@@ -39,6 +39,10 @@
     font-size: 16px;
 }
 
+.item_delete_button:hover {
+    cursor: pointer;
+}
+
 .item_delete_button:active {
     color: #FF8282;
     font-size: 13px;
