@@ -1,0 +1,54 @@
+.item_container {
+    width: '100%';
+    border-radius: 5px;
+    background-color: #383838;
+    padding: 20px;
+    padding-bottom: 12px;
+    margin-bottom: 15px;
+}
+
+.item_title_container {
+    display: flex;
+}
+
+.item_tick {
+    font-size: 22px;
+    flex-grow: 0;
+    margin-right: 15px;
+    align-self: center;
+    min-width: 20px;
+}
+
+.item_tick_input {
+    width: 22px;
+    height: 22px;
+}
+
+.item_title {
+    margin: 5px 0 0 0;
+    flex-grow: 30;
+}
+
+.item_delete_button {
+    flex-grow: 1;
+    width: 12px;
+    background: none;
+    border: none;
+    font-weight: bold;
+    color: #E60000;
+    font-size: 16px;
+}
+
+.item_delete_button:active {
+    color: #FF8282;
+    font-size: 13px;
+}
+
+.item_description_container {
+    width: calc(100% - 30px);
+    display: inline-block;
+    background-color: #212121;
+    border-radius: 5px;
+    margin: 10px 0 0 0;
+    padding: 15px;
+}
