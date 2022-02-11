@@ -21,7 +21,7 @@ proto.todo = require('./todo_pb.js');
 /**
  * @param {string} hostname
  * @param {?Object} credentials
- * @param {?Object} options
+ * @param {?grpc.web.ClientOptions} options
  * @constructor
  * @struct
  * @final
@@ -29,7 +29,7 @@ proto.todo = require('./todo_pb.js');
 proto.todo.TodoServiceClient =
     function(hostname, credentials, options) {
   if (!options) options = {};
-  options['format'] = 'text';
+  options.format = 'text';
 
   /**
    * @private @const {!grpc.web.GrpcWebClientBase} The client
@@ -47,7 +47,7 @@ proto.todo.TodoServiceClient =
 /**
  * @param {string} hostname
  * @param {?Object} credentials
- * @param {?Object} options
+ * @param {?grpc.web.ClientOptions} options
  * @constructor
  * @struct
  * @final
@@ -55,7 +55,7 @@ proto.todo.TodoServiceClient =
 proto.todo.TodoServicePromiseClient =
     function(hostname, credentials, options) {
   if (!options) options = {};
-  options['format'] = 'text';
+  options.format = 'text';
 
   /**
    * @private @const {!grpc.web.GrpcWebClientBase} The client
@@ -93,30 +93,11 @@ const methodDescriptor_TodoService_GetItems = new grpc.web.MethodDescriptor(
 
 
 /**
- * @const
- * @type {!grpc.web.AbstractClientBase.MethodInfo<
- *   !proto.todo.GetItemsRequest,
- *   !proto.todo.GetItemsResponse>}
- */
-const methodInfo_TodoService_GetItems = new grpc.web.AbstractClientBase.MethodInfo(
-  proto.todo.GetItemsResponse,
-  /**
-   * @param {!proto.todo.GetItemsRequest} request
-   * @return {!Uint8Array}
-   */
-  function(request) {
-    return request.serializeBinary();
-  },
-  proto.todo.GetItemsResponse.deserializeBinary
-);
-
-
-/**
  * @param {!proto.todo.GetItemsRequest} request The
  *     request proto
  * @param {?Object<string, string>} metadata User defined
  *     call metadata
- * @param {function(?grpc.web.Error, ?proto.todo.GetItemsResponse)}
+ * @param {function(?grpc.web.RpcError, ?proto.todo.GetItemsResponse)}
  *     callback The callback function(error, response)
  * @return {!grpc.web.ClientReadableStream<!proto.todo.GetItemsResponse>|undefined}
  *     The XHR Node Readable Stream
@@ -135,7 +116,7 @@ proto.todo.TodoServiceClient.prototype.getItems =
 /**
  * @param {!proto.todo.GetItemsRequest} request The
  *     request proto
- * @param {?Object<string, string>} metadata User defined
+ * @param {?Object<string, string>=} metadata User defined
  *     call metadata
  * @return {!Promise<!proto.todo.GetItemsResponse>}
  *     Promise that resolves to the response
@@ -173,30 +154,11 @@ const methodDescriptor_TodoService_CreateItem = new grpc.web.MethodDescriptor(
 
 
 /**
- * @const
- * @type {!grpc.web.AbstractClientBase.MethodInfo<
- *   !proto.todo.Item,
- *   !proto.todo.Item>}
- */
-const methodInfo_TodoService_CreateItem = new grpc.web.AbstractClientBase.MethodInfo(
-  proto.todo.Item,
-  /**
-   * @param {!proto.todo.Item} request
-   * @return {!Uint8Array}
-   */
-  function(request) {
-    return request.serializeBinary();
-  },
-  proto.todo.Item.deserializeBinary
-);
-
-
-/**
  * @param {!proto.todo.Item} request The
  *     request proto
  * @param {?Object<string, string>} metadata User defined
  *     call metadata
- * @param {function(?grpc.web.Error, ?proto.todo.Item)}
+ * @param {function(?grpc.web.RpcError, ?proto.todo.Item)}
  *     callback The callback function(error, response)
  * @return {!grpc.web.ClientReadableStream<!proto.todo.Item>|undefined}
  *     The XHR Node Readable Stream
@@ -215,7 +177,7 @@ proto.todo.TodoServiceClient.prototype.createItem =
 /**
  * @param {!proto.todo.Item} request The
  *     request proto
- * @param {?Object<string, string>} metadata User defined
+ * @param {?Object<string, string>=} metadata User defined
  *     call metadata
  * @return {!Promise<!proto.todo.Item>}
  *     Promise that resolves to the response
@@ -253,30 +215,11 @@ const methodDescriptor_TodoService_CloseItem = new grpc.web.MethodDescriptor(
 
 
 /**
- * @const
- * @type {!grpc.web.AbstractClientBase.MethodInfo<
- *   !proto.todo.Item,
- *   !proto.todo.GeneralResponse>}
- */
-const methodInfo_TodoService_CloseItem = new grpc.web.AbstractClientBase.MethodInfo(
-  proto.todo.GeneralResponse,
-  /**
-   * @param {!proto.todo.Item} request
-   * @return {!Uint8Array}
-   */
-  function(request) {
-    return request.serializeBinary();
-  },
-  proto.todo.GeneralResponse.deserializeBinary
-);
-
-
-/**
  * @param {!proto.todo.Item} request The
  *     request proto
  * @param {?Object<string, string>} metadata User defined
  *     call metadata
- * @param {function(?grpc.web.Error, ?proto.todo.GeneralResponse)}
+ * @param {function(?grpc.web.RpcError, ?proto.todo.GeneralResponse)}
  *     callback The callback function(error, response)
  * @return {!grpc.web.ClientReadableStream<!proto.todo.GeneralResponse>|undefined}
  *     The XHR Node Readable Stream
@@ -295,7 +238,7 @@ proto.todo.TodoServiceClient.prototype.closeItem =
 /**
  * @param {!proto.todo.Item} request The
  *     request proto
- * @param {?Object<string, string>} metadata User defined
+ * @param {?Object<string, string>=} metadata User defined
  *     call metadata
  * @return {!Promise<!proto.todo.GeneralResponse>}
  *     Promise that resolves to the response
@@ -333,30 +276,11 @@ const methodDescriptor_TodoService_DeleteItem = new grpc.web.MethodDescriptor(
 
 
 /**
- * @const
- * @type {!grpc.web.AbstractClientBase.MethodInfo<
- *   !proto.todo.Item,
- *   !proto.todo.GeneralResponse>}
- */
-const methodInfo_TodoService_DeleteItem = new grpc.web.AbstractClientBase.MethodInfo(
-  proto.todo.GeneralResponse,
-  /**
-   * @param {!proto.todo.Item} request
-   * @return {!Uint8Array}
-   */
-  function(request) {
-    return request.serializeBinary();
-  },
-  proto.todo.GeneralResponse.deserializeBinary
-);
-
-
-/**
  * @param {!proto.todo.Item} request The
  *     request proto
  * @param {?Object<string, string>} metadata User defined
  *     call metadata
- * @param {function(?grpc.web.Error, ?proto.todo.GeneralResponse)}
+ * @param {function(?grpc.web.RpcError, ?proto.todo.GeneralResponse)}
  *     callback The callback function(error, response)
  * @return {!grpc.web.ClientReadableStream<!proto.todo.GeneralResponse>|undefined}
  *     The XHR Node Readable Stream
@@ -375,7 +299,7 @@ proto.todo.TodoServiceClient.prototype.deleteItem =
 /**
  * @param {!proto.todo.Item} request The
  *     request proto
- * @param {?Object<string, string>} metadata User defined
+ * @param {?Object<string, string>=} metadata User defined
  *     call metadata
  * @return {!Promise<!proto.todo.GeneralResponse>}
  *     Promise that resolves to the response
