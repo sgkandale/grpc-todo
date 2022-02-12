@@ -16,6 +16,7 @@ export default function View() {
     const [itemsList, setItemsList] = useState([])
 
     const loadItems = () => {
+        setState('loading')
         const client = new TodoServiceClient(TodoServiceAddress, null, null)
         const req = new GetItemsRequest();
 
@@ -35,6 +36,12 @@ export default function View() {
         loadItems()
     }, [])
 
+    const removeItemFromList = (id) => {
+        console.log(id)
+        const newItemsList = itemsList.filter(item => item.id !== id)
+        setItemsList(newItemsList)
+    }
+
     const renderItems = () => {
         if (state === 'loading') {
             return <p>Loading...</p>
@@ -42,7 +49,11 @@ export default function View() {
             return <p>Error : {error}</p>
         } else {
             return itemsList.map((item, index) => {
-                return <Item key={index} item={item} />
+                return <Item
+                    key={item.id}
+                    item={item}
+                    removeItemFromList={removeItemFromList}
+                />
             })
         }
     }
@@ -57,6 +68,7 @@ export default function View() {
         <AddItem
             showAddItemModal={showAddItemModal}
             setShowAddItemModal={setShowAddItemModal}
+            loadItems={loadItems}
         />
         <AddButton
             setShowAddItemModal={setShowAddItemModal}

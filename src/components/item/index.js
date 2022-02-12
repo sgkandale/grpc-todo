@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useRef } from 'react';
 import './style.css';
 import { TodoServiceClient } from '../../proto/todo_grpc_web_pb';
 import { Item as ItemRequest } from '../../proto/todo_pb';
@@ -6,6 +6,7 @@ import { TodoServiceAddress } from '../../proto/server';
 
 export default function Item(props) {
     const item = props.item;
+    const itemContainer = useRef(null)
 
     const closeItem = () => {
         item.closed = true
@@ -28,11 +29,26 @@ export default function Item(props) {
         client.deleteItem(req, {}, (err, response) => {
             if (err) {
                 console.log(err)
+            } else {
+                props.removeItemFromList(item.id)
+                collapseItem()
             }
         })
     }
 
-    return <div className='item_container'>
+    const collapseItem = () => {
+        itemContainer.current.style.height = "0px";
+        itemContainer.current.style.padding = "0px";
+        itemContainer.current.style.margin = "0px";
+        itemContainer.current.style.border = "0px";
+        itemContainer.current.style.overflow = "hidden";
+    }
+
+    return <div
+        className='item_container'
+        id={item.id}
+        ref={itemContainer}
+    >
         <div className='item_title_container'>
             <span className='item_tick'>
                 <input
@@ -41,6 +57,7 @@ export default function Item(props) {
                     checked={item.closed}
                     className='item_tick_input'
                     onChange={closeItem}
+                    disabled={item.closed}
                 />
             </span>
             <h4 className='item_title'>

@@ -4,12 +4,14 @@ import { TodoServiceClient } from '../../proto/todo_grpc_web_pb';
 import { Item } from '../../proto/todo_pb';
 import { TodoServiceAddress } from '../../proto/server';
 
+const initValues = {
+    title: "",
+    description: "",
+    error: "",
+}
+
 export default function AddItem(props) {
-    const [values, setValues] = useState({
-        title: "",
-        description: "",
-        error: "",
-    })
+    const [values, setValues] = useState(initValues)
     const [state, setState] = useState('form')
     const changeValues = (event) => {
         const { name, value } = event.target
@@ -38,7 +40,12 @@ export default function AddItem(props) {
                 setState('error')
             } else {
                 setState('done')
-                setTimeout(() => { setState('form') }, 1000)
+                setValues(initValues)
+                setTimeout(() => {
+                    setState('form')
+                    props.setShowAddItemModal(false)
+                    props.loadItems()
+                }, 1000)
             }
         })
     }
