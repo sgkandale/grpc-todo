@@ -1,4 +1,4 @@
-module grpc-todo
+module todo
 
 go 1.17
 
